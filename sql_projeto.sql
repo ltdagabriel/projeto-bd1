@@ -15,21 +15,15 @@ create table Pessoa(
 	cpf varchar (11),
     nome varchar (30),
     tel integer,
-    rua varchar (50),
-    primary key (cpf)
+    rua_endereco varchar (50),
+    primary key (cpf),
+    foreign key (rua_endereco) references Endereco(rua)
 );
 
 create table Cliente(
 	cpf varchar (11),
-    nome varchar (30),
-    tel integer,
     primary key (cpf),
     foreign key (cpf) references Pessoa(cpf)
-);
-
-create table Veiculo(
-	placa varchar (7),
-    primary key (placa)
 );
 
 create table Tipo(
@@ -37,6 +31,13 @@ create table Tipo(
     nome varchar (20),
     modelo varchar (20),
     primary key (id)
+);
+
+create table Veiculo(
+	placa varchar (7),
+    veiculo_tipo integer,
+    primary key (placa),
+    foreign key (veiculo_tipo) references Tipo(id)
 );
 	
 create table Orcamento(
@@ -62,8 +63,6 @@ create table Funcao(
 
 create table Funcionario(
 	cpf varchar (11),
-    nome varchar (30),
-    tel integer,
     nro_carteira integer,
     salario float,
     id_funcao integer,
@@ -73,10 +72,10 @@ create table Funcionario(
 );
 
 create table Cliente_Veiculo(
-	cpf varchar (11),
-    placa varchar (7),
-    foreign key (cpf) references Cliente(cpf),
-    foreign key (placa) references Veiculo(placa)
+	cpf_cliente varchar (11),
+    placa_veiculo varchar (7),
+    foreign key (cpf_cliente) references Cliente(cpf),
+    foreign key (placa_veiculo) references Veiculo(placa)
 );
 
 create table Estoque(
@@ -107,13 +106,3 @@ create table Tarefa_Estoque(
     foreign key (id_tarefa) references Tarefa(id),
     foreign key (id_estoque) references Estoque(id)
 );
-	
-create table Veiculo_Tipo(
-	placa_veiculo varchar(7),
-    id_tipo integer,
-    foreign key (placa_veiculo) references Veiculo(placa),
-    foreign key (id_tipo) references Tipo(id)
-);
-
-
-    
