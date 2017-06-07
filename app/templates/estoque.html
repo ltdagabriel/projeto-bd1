@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+	<h2 class = "text-center"><i>Estoque</i></h2>
+			<form class="form-horizontal">
+				<h2>Cadastrar Produto</h2>
+				<div class="row">
+					<div class="col-md-4">
+						<label>Nome do Item</label>
+						<input type="text" name="in_cpf" class="form-control">
+					</div>
+
+					<div class="col-md-4">
+						<label>Preço</label>
+						<input type="text" name="in_cpf" class="form-control">
+
+					</div>
+
+					<div class="col-md-4">
+						<label>Quantidade</label>
+						<input type="text" name="in_cpf" class="form-control">
+					</div>
+				</div>
+			</form>
+			<br>
+			<button class="btn btn-primary">Pronto</button>
+		</div>
+
+		<div class="container-fluid">
+			<form class="form-horizontal">
+				<h2>Buscar Produto</h2>
+				<div class="row">
+					<div class="col-md-12">
+						<label>Nome do Item</label>
+						<input type="text" name="in_cpf" class="form-control">
+					</div>
+				</div>
+			</form>
+			<br>
+			<button class="btn btn-primary">Buscar</button>
+{% endblock %}

@@ -1,0 +1,25 @@
+ {% extends "base.html" %}
+ {% block content %}
+ <h2><i>Dados Do Veiculo</i></h2>    
+            <form>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>CPF (Cliente)</label>
+                        <input type="text" name="in_placa" class="form-control">
+                        <label>Placa</label>
+                        <input type="text" name="in_placa" class="form-control">
+                        <label>Modelo</label>
+                        <input type="text" name="in_modelo" class="form-control">
+                        <label>Nome</label>
+                        <input type="text" name="in_nome_carro" class="form-control">
+                    </div>
+                    <div class="col-md-6 text-center" >
+                        <img src="http://www.freeiconspng.com/uploads/similar-icons-with-these-tags-house-home-building-6.png" height="180" width="180">
+                    </div>
+                </div>
+                <br>
+            <button class="btn btn-primary">Finalizar Cadastro</button>
+                <br>
+                <br>
+            </form>
+{% endblock %}

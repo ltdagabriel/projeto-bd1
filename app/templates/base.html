@@ -26,9 +26,12 @@
 		<img src="static/img/multimarcas_logo.png" class="img-responsive center-block" alt="Responsive image">
 	<br><br>
 		<div class="container-fluid text-center">
-			<a href="home.html" class="btn btn-primary"><span class="glyphicon glyphicon-align-left"></span>Home</a>
-			<a href="cadastro_cliente.html" class="btn btn-primary"><span class="glyphicon glyphicon-align-left"></span>Cadastrar Cliente</a>
-			<a href="home.html" class="btn btn-primary"><span class="glyphicon glyphicon-align-left"></span>Sobre-Nos</a>
+			<a href={{ url_for('cliente') }} class="btn btn-primary"><span class="glyphicon glyphicon-align-left"></span> Cadastrar Cliente</a>
+            <a href={{ url_for('veiculo') }} class="btn btn-primary"><span class="glyphicon glyphicon-align-left"></span> Cadastrar Veiculo</a>
+            <a href={{ url_for('funcionario') }} class="btn btn-primary"><span class="glyphicon glyphicon-align-left"></span> Cadastrar Funcionario</a>
+            <a href={{ url_for('orcamento') }} class="btn btn-primary"><span class="glyphicon glyphicon-align-left"></span> Orçamento</a>
+            <a href={{ url_for('servicos') }} class="btn btn-primary"><span class="glyphicon glyphicon-align-left"></span> Serviços</a>
+            <a href={{ url_for('estoque') }} class="btn btn-primary"><span class="glyphicon glyphicon-align-left"></span> Estoque</a>
 		</div>
 	</div>
 
