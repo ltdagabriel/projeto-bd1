@@ -1,9 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
 	<div class="container-fluid">
+		<form method='post' action="{{ url_for('retornarcliente') }}" class="form-horizontal"> 
 			<h2>Buscar Cliente</h2>
 			<label>CPF</label>
 			<input type="text" name="cpf_busca" class="form-control">
-			<button class="btn btn-primary" href={{ url_for('buscarcliente')}}> Buscar</button>
+			<input type="submit" />
+		</form>
 	</div>
 {% endblock %}

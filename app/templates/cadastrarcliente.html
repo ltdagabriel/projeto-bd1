@@ -2,7 +2,7 @@
 {% block content %}
 <h2 class = "text-center"><i>Cadastro Do Cliente</i></h2>
 			<h2>Dados Do Cliente</h2>
-			<form class="form-horizontal">
+			<form method="post" action="{{ url_for('inserircliente') }}" class="form-horizontal">
 				<label>Nome</label>
 				<input type="text" name="in_nome" class="form-control">
 				<div class="row">
@@ -42,29 +42,7 @@
 				</div>
 				<label>Senha</label>
 				<input type="text" name="in_senha" class="form-control">
-				
+				<input type="submit" />
 			</form>
 		</div>
-
-		<div class="container-fluid">
-			<h2><i>Dados Do Veiculo</i></h2>	
-			<form>
-				<div class="row">
-					<div class="col-md-6">
-						<label>Placa</label>
-						<input type="text" name="in_placa" class="form-control">
-						<label>Modelo</label>
-						<input type="text" name="in_modelo" class="form-control">
-						<label>Nome</label>
-						<input type="text" name="in_nome_carro" class="form-control">
-					</div>
-					<div class="col-md-6 text-center" >
-						<img src="http://www.freeiconspng.com/uploads/similar-icons-with-these-tags-house-home-building-6.png" height="180" width="180">
-					</div>
-				</div>
-				<br>
-			<button class="btn btn-primary">Finalizar Cadastro</button>
-				<br>
-			</form>
-		</div>		
 {% endblock %}
