@@ -12,11 +12,27 @@ mysql = MySQL(app)
 @app.route('/')
 @app.route('/index')
 def index():
-	cur = mysql.connection.cursor()
-	cur.execute('''SELECT * FROM Orcamento''')
-	rv = cur.fetchall()
-	print(str(rv))
-	return render_template('index.html',title='home')
+	return render_template('index.html')
+
+@app.route('/cliente')
+def cliente():
+	return render_template('cliente.html')
+
+@app.route('/veiculo')
+def veiculo():
+	return render_template('veiculo.html')
+
+@app.route('/funcionario')
+def funcionario():
+	return render_template('funcionario.html')
+
+@app.route('/servicos')
+def servicos():
+	return render_template('servicos.html')
+
+@app.route('/estoque')
+def estoque():
+	return render_template('estoque.html')
 
 @app.route('/orcamento')
 def orcamento():
