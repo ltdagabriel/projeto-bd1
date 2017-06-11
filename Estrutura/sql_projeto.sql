@@ -22,6 +22,7 @@ create table Pessoa(
 );
 
 create table Cliente(
+	nome varchar(20),
 	cpf varchar (11),
     primary key (cpf),
     foreign key (cpf) references Pessoa(cpf)
@@ -41,7 +42,7 @@ create table Veiculo(
     foreign key (veiculo_tipo) references Tipo(id)
 );
 
-create table Tarefa(
+create table Servico(
 	id integer NOT NULL AUTO_INCREMENT,
     nome varchar (40),
     preco float,
@@ -81,26 +82,26 @@ create table Cliente_Veiculo(
     foreign key (placa_veiculo) references Veiculo(placa)
 );
 
-create table Estoque(
+create table Peca(
 	id integer NOT NULL AUTO_INCREMENT,
     nome varchar (20),
-    qtde integer,
     preco float,
     primary key (id)
 );
 
-create table Orcamento_Tarefa(
+create table Orcamento_Servico(
 	id_orcamento integer,
-    id_tarefa integer,
+    id_servico integer,
     foreign key (id_orcamento) references Orcamento(id),
-    foreign key (id_tarefa) references Tarefa(id)
+    foreign key (id_servico) references Servico(id)
 );
 
-create table Tarefa_Estoque(
-	id_tarefa integer,
-    id_estoque integer,
-    foreign key (id_tarefa) references Tarefa(id),
-    foreign key (id_estoque) references Estoque(id)
+create table Orcamento_Peca(
+	id_orcamento integer,
+    id_peca integer,
+	qtde integer,
+    foreign key (id_orcamento) references Orcamento(id),
+    foreign key (id_peca) references Peca(id)
 );
 
 insert into Endereco
@@ -130,11 +131,11 @@ insert into Pessoa
 values ("86014403981","Isaac Elias Rodrigues",25284227,"Travessa Luiz Tomazi","123456");
 
 insert into Cliente
-values ("22570989517");
+values ("Juliana Silveira", "22570989517");
 insert into Cliente
-values ("56027372192");
+values ("Silvio Santos", "56027372192");
 insert into Cliente
-values ("18740148920");
+values ("Lula da Silva", "18740148920");
 
 insert into Tipo
 values (DEFAULT,"Carro","Gol");
@@ -155,26 +156,12 @@ values ("KEO7537",DEFAULT);
 insert into Veiculo
 values ("ARP6834",DEFAULT);
 
-insert into Tarefa
+insert into Servico
 values (DEFAULT,"Trocar pneu",300);
-insert into Tarefa
+insert into Servico
 values (DEFAULT,"Trocar bateria",200);
-insert into Tarefa
+insert into Servico
 values (DEFAULT,"Trocar radiador",450);
-
-insert into Estoque
-values (DEFAULT,"Bateria 1",20,150);
-insert into Estoque
-values (DEFAULT,"Pneu 1",16,200);
-insert into Estoque
-values (DEFAULT,"Radiador 1",13,250);
-
-insert into Tarefa_Estoque
-values (1,2);
-insert into Tarefa_Estoque
-values (2,1);
-insert into Tarefa_Estoque
-values (3,3);
 
 insert into Funcionario
 values ("00415965870",111111,2200,1);
@@ -190,13 +177,27 @@ values (DEFAULT,STR_TO_DATE('02-01-2017', '%d-%m-%Y'),"56027372192","00415965870
 insert into Orcamento
 values (DEFAULT,STR_TO_DATE('02-01-2017', '%d-%m-%Y'),"18740148920","00415965870");
 
-insert into Orcamento_Tarefa
+insert into Peca
+values (DEFAULT,"Bateria 1",150);
+insert into Peca
+values (DEFAULT,"Pneu 1",200);
+insert into Peca
+values (DEFAULT,"Radiador 1",250);
+
+insert into Orcamento_Peca
+values (1,2,10);
+insert into Orcamento_Peca
+values (2,1,22);
+insert into Orcamento_Peca
+values (3,3,10);
+
+insert into Orcamento_Servico
 values (1,1);
-insert into Orcamento_Tarefa
+insert into Orcamento_Servico
 values (1,2);
-insert into Orcamento_Tarefa
+insert into Orcamento_Servico
 values (2,1);
-insert into Orcamento_Tarefa
+insert into Orcamento_Servico
 values (3,3);
 
 insert into Cliente_Veiculo
