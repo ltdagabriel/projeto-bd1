@@ -2,27 +2,26 @@ drop database if exists sys;
 create database sys;
 use sys;
 
+create table Pessoa(
+	cpf varchar (11),
+    nome varchar (40),
+    tel integer,
+    senha varchar(20),
+    primary key (cpf)
+);
+
 create table Endereco(
 	rua varchar (50),
     nro integer,
     cep integer,
     cidade varchar (30),
     estado varchar (2),
-    primary key (rua)
-);
-
-create table Pessoa(
-	cpf varchar (11),
-    nome varchar (40),
-    tel integer,
-    rua_endereco varchar (50),
-    senha varchar(20),
-    primary key (cpf),
-    foreign key (rua_endereco) references Endereco(rua)
+	cpf_pessoa varchar (11),
+    foreign key (cpf_pessoa)references Pessoa(cpf),
+    primary key (rua,cpf_pessoa)
 );
 
 create table Cliente(
-	nome varchar(20),
 	cpf varchar (11),
     primary key (cpf),
     foreign key (cpf) references Pessoa(cpf)
@@ -104,38 +103,38 @@ create table Orcamento_Peca(
     foreign key (id_peca) references Peca(id)
 );
 
-insert into Endereco
-values ("Rua A",581,87308074,"Campo Mourão","PR");
-insert into Endereco
-values ("Rua Jango Menezes",137,87301276,"Campo Mourão","PR");
-insert into Endereco
-values ("Avenida dos Andradas",234,87310680,"Campo Mourão","PR");
-insert into Endereco
-values ("Conjunto Benevides",918,87308155,"Campo Mourão","PR");
-insert into Endereco
-values ("Rua Avelina Sanson Cooper",115,82220144,"Curitiba","PR");
-insert into Endereco
-values("Travessa Luiz Tomazi",733,85605351,"Campo Mourão","PR");
+insert into Pessoa
+values ("22570989517","Ryan Paulo Vinicius Lima",38223790,"123456");
+insert into Pessoa
+values ("56027372192","Iago Renato Monteiro",36477694,"123456");
+insert into Pessoa
+values ("00415965870","Matheus Giovanni Nathan Carvalho",38791387,"123456");
+insert into Pessoa
+values ("87449101424","Débora Julia Bárbara da Silva",27196380,"123456");
+insert into Pessoa
+values ("18740148920","Elisa Nicole Nascimento",988018452,"123456");
+insert into Pessoa
+values ("86014403981","Isaac Elias Rodrigues",25284227,"123456");
 
-insert into Pessoa
-values ("22570989517","Ryan Paulo Vinicius Lima",38223790,"Rua A","123456");
-insert into Pessoa
-values ("56027372192","Iago Renato Monteiro",36477694,"Rua Jango Menezes","123456");
-insert into Pessoa
-values ("00415965870","Matheus Giovanni Nathan Carvalho",38791387,"Avenida dos Andradas","123456");
-insert into Pessoa
-values ("87449101424","Débora Julia Bárbara da Silva",27196380,"Conjunto Benevides","123456");
-insert into Pessoa
-values ("18740148920","Elisa Nicole Nascimento",988018452,"Rua Avelina Sanson Cooper","123456");
-insert into Pessoa
-values ("86014403981","Isaac Elias Rodrigues",25284227,"Travessa Luiz Tomazi","123456");
+insert into Endereco
+values ("Rua A",581,87308074,"Campo Mourão","PR","22570989517");
+insert into Endereco
+values ("Rua Jango Menezes",137,87301276,"Campo Mourão","PR","56027372192");
+insert into Endereco
+values ("Avenida dos Andradas",234,87310680,"Campo Mourão","PR","00415965870");
+insert into Endereco
+values ("Conjunto Benevides",918,87308155,"Campo Mourão","PR","87449101424");
+insert into Endereco
+values ("Rua Avelina Sanson Cooper",115,82220144,"Curitiba","PR","18740148920");
+insert into Endereco
+values("Travessa Luiz Tomazi",733,85605351,"Campo Mourão","PR","86014403981");
 
 insert into Cliente
-values ("Juliana Silveira", "22570989517");
+values ("22570989517");
 insert into Cliente
-values ("Silvio Santos", "56027372192");
+values ("56027372192");
 insert into Cliente
-values ("Lula da Silva", "18740148920");
+values ("18740148920");
 
 insert into Tipo
 values (DEFAULT,"Carro","Gol");
