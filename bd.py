@@ -23,12 +23,13 @@ def buscarcliente(cpf):
 	query = """SELECT p.nome,p.cpf,p.tel,p.rua_endereco FROM Cliente c,Pessoa p WHERE c.cpf = p.cpf AND c.cpf = %s"""
 	cur.execute(query, [cpf])
 	rv = cur.fetchall()
+
 	return rv
 
 def removercliente(cpf):
 	conn = connect()
 	cur = conn.cursor()
-	query = """SELECT p.cpf,p.rua_endereco FROM Cliente c,Pessoa p WHERE c.cpf = p.cpf AND c.cpf = %s"""
+	query = """SELECT p.cpf FROM Cliente c,Pessoa p WHERE c.cpf = p.cpf AND c.cpf = %s"""
 	cur.execute(query,[cpf])
 	rv = cur.fetchall()
 	if not rv:
@@ -52,10 +53,10 @@ def removercliente(cpf):
 		cur.execute(query,[orcamentoid])
 	query = """DELETE FROM Cliente WHERE cpf = %s"""
 	cur.execute(query,[cpf])
+	query = """DELETE FROM Endereco WHERE cpf_pessoa = %s"""
+	cur.execute(query,[cpf])
 	query = """DELETE FROM Pessoa where cpf = %s"""
 	cur.execute(query,[cpf])
-	query = """DELETE FROM Endereco WHERE rua = %s"""
-	cur.execute(query,[rv[0][1]])
 	conn.commit()
 	return 0
 
