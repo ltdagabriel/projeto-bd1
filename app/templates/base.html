@@ -9,7 +9,7 @@
     <meta name="description" content="Projeto de Banco de Dados, Oficina Mecanica">
     <!-- Define o para mecanismos de busca (google) o conteudo do site -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static',filename='bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <!-- Faz um Link com a pasta bootstrap e usa seus componentes css -->
      <style>
         body{background-color: #FFF; }
@@ -23,7 +23,7 @@
 </head>
 <body>
 	<div class="jumbotron text-center">
-		<img src="static/img/multimarcas_logo.png" class="img-responsive center-block" alt="Responsive image">
+		<img src="{{ url_for('static',filename='img/multimarcas_logo.png') }}" class="img-responsive center-block" alt="Responsive image">
 	<br><br>
 		<div class="container-fluid text-center">
 			<a href={{ url_for('cliente') }} class="btn btn-primary"><span class="glyphicon glyphicon-align-left"></span> Cliente</a>

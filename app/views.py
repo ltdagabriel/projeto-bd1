@@ -15,18 +15,18 @@ def cliente():
 def buscarcliente():
 	return render_template('buscarcliente.html')
 
+@app.route('/buscarcliente/bd', methods=['POST'])
+def buscarclientebd():
+	cpf = request.form['cpf_busca']
+	rv = bd.buscarcliente(cpf)
+	return render_template('resultbuscarcliente.html',result=rv)
+
 @app.route('/cadastrarcliente')
 def cadastrarcliente():
 	return render_template('cadastrarcliente.html')
 
-@app.route('/buscarcliente/bd', methods=['POST'])
-def retornarcliente():
-	cpf = request.form['cpf_busca']
-	rv = bd.retornaCliente(cpf)
-	return redirect(url_for('index'))
-
 @app.route('/cadastrarcliente/bd' , methods=['POST'])
-def inserircliente():
+def cadastrarclientebd():
 	name = request.form['in_nome']	
 	cpf = request.form['in_cpf']
 	tel = request.form['in_tel']
@@ -37,9 +37,18 @@ def inserircliente():
 	estado = request.form['in_estado']
 	senha = request.form['in_senha']
 	print(name,cpf)
-	bd.insereCliente(name,cpf,tel,rua,num,cidade,cep,estado,senha)
+	bd.cadastrarcliente(name,cpf,tel,rua,num,cidade,cep,estado,senha)
 	return render_template('index.html')
 
+@app.route('/removercliente/')
+def removercliente():
+	return render_template('removercliente.html')
+
+@app.route('/removercliente/db', methods=['POST'])
+def removerclientebd():
+	cpf = request.form['cpf_remove']
+	bd.removercliente(cpf)
+	return render_template('index.html')
 
 @app.route('/veiculo')
 def veiculo():

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+	<div class="container-fluid">
+		<form method='post' action="{{ url_for('removerclientebd') }}" class="form-horizontal"> 
+			<h2>Remover Cliente</h2>
+			<label>CPF</label>
+			<input type="text" name="cpf_remove" class="form-control">
+			<input type="submit" />
+		</form>
+	</div>
+{% endblock %}
