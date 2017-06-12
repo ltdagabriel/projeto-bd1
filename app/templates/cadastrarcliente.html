@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+		<div class = "container-fluid">
+			<div class="text-center">
+				<h2><i>Cadastro Do Cliente</i></h2>
+			</div>
+			<h2>Dados Do Cliente</h2>
+			<form method="post" action="{{ url_for('cadastrarclientebd') }}" class="form-horizontal">
+				<label>Nome</label>
+				<input type="text" name="in_nome" class="form-control">
+				<div class="row">
+					<div class="col-md-6">
+						<label>CPF</label>
+						<input type="text" name="in_cpf" class="form-control">
+					</div>
+
+					<div class="col-md-6">
+						<label>Telefone</label>
+						<input type="text" name="in_tel" class="form-control">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<label>Rua</label>
+						<input type="text" name="in_rua" class="form-control">
+					</div>
+					<div class="col-md-6">
+						<label>Nº</label>
+						<input type="text" name="in_n" class="form-control">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<label>Cidade</label>
+						<input type="text" name="in_cidade" class="form-control">
+					</div>
+					<div class="col-md-3">
+						<label>CEP</label>
+						<input type="text" name="in_cep" class="form-control">
+					</div>
+					<div class="col-md-3">
+						<label>Estado (UF)</label>
+						<input type="text" name="in_estado" class="form-control">
+					</div>
+				</div>
+				<label>Senha</label>
+				<input type="text" name="in_senha" class="form-control">
+				<br>
+				<input type="submit" />
+			</form>
+		</div>
+{% endblock %}
