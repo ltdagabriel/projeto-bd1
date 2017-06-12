@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container-fluid text-center">
+	<br>
+	{% for result in results %}
+		{% if tipo == "cliente" %}
+			{{ result[0] }} {{ result[1] }} {{ result[2] }} {{ result[3] }} <br>			
+		{% elif tipo == "peca" %}
+			{{ result[1] }} {{ result[2] }} <br>
+		{% endif %}
+	{% endfor %}
+</div>
+{% endblock %}

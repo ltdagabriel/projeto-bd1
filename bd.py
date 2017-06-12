@@ -58,3 +58,42 @@ def removercliente(cpf):
 	cur.execute(query,[rv[0][1]])
 	conn.commit()
 	return 0
+
+#PEÇA
+
+def buscarpeca(nome):
+	conn = connect()
+	cur = conn.cursor()
+	query = """SELECT * FROM Peca WHERE nome RLIKE %s"""
+	cur.execute(query,[nome])
+	rv = cur.fetchall()
+	return rv
+
+def cadastrarpeca(nome,preco):
+	conn = connect()
+	cur = conn.cursor()
+	query = """INSERT INTO Peca VALUES (DEFAULT,%s,%s)"""
+	cur.execute(query,[nome,preco])
+	conn.commit()
+	return
+
+def alterarpeca(nomei,nome,preco):
+	conn = connect()
+	cur = conn.cursor()
+	query = """UPDATE Peca SET nome = %s,preco = %s WHERE nome = %s"""
+	cur.execute(query,[nome,preco,nomei])
+	conn.commit()
+	return
+
+def removerpeca(nome):
+	conn = connect()
+	cur = conn.cursor()
+	query = """SELECT id FROM Peca WHERE nome = %s"""
+	cur.execute(query,[nome])
+	rv = cur.fetchall()
+	query = """DELETE FROM Orcamento_Peca WHERE id_peca = %s"""
+	cur.execute(query,[rv[0][0]])
+	query = """DELETE FROM Peca WHERE id = %s"""
+	cur.execute(query,[rv[0][0]])
+	conn.commit()
+	return rv
