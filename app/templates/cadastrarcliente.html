@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
-<h2 class = "text-center"><i>Cadastro Do Cliente</i></h2>
+		<div class = "container-fluid">
+			<div class="text-center">
+				<h2><i>Cadastro Do Cliente</i></h2>
+			</div>
 			<h2>Dados Do Cliente</h2>
 			<form method="post" action="{{ url_for('cadastrarclientebd') }}" class="form-horizontal">
 				<label>Nome</label>
@@ -42,6 +45,7 @@
 				</div>
 				<label>Senha</label>
 				<input type="text" name="in_senha" class="form-control">
+				<br>
 				<input type="submit" />
 			</form>
 		</div>
