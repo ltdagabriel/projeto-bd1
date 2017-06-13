@@ -183,7 +183,7 @@ def cadastrarservico():
 def cadastrarservicobd():
 	name = request.form['nome_servico']	
 	preco = request.form['preco_servico']	
-	print(name,cpf)
+	print(nome,preco)
 	bd.cadastrarservico(nome,preco)
 	return render_template('index.html')
 
