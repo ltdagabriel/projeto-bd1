@@ -98,3 +98,40 @@ def removerpeca(nome):
 	cur.execute(query,[rv[0][0]])
 	conn.commit()
 	return rv
+
+#SERVIÇOS
+
+def buscarservico(nome):
+	conn = connect()
+	cur = conn.cursor()
+	query = """SELECT * FROM Servico WHERE nome RLIKE %s"""
+	cur.execute(query,[nome])
+	rv = cur.fetchall()
+	return rv
+
+def cadastrarservico(nome,preco):
+	conn = connect()
+	cur = conn.cursor()
+	query = """INSERT INTO Servico VALUES (DEFAULT,%s,%s)"""
+	cur.execute(query,[nome,preco])
+	conn.commit()
+	return
+
+def alterarservico(nomei,nome,preco):
+	conn = connect()
+	cur = conn.cursor()
+	query = """UPDATE Servico SET nome = %s,preco = %s WHERE nome = %s"""
+	cur.execute(query,[nome,preco,nomei])
+	conn.commit()
+	return
+
+def removerservico(nome):
+	conn = connect()
+	cur = conn.cursor()
+	query = """SELECT id FROM Servico WHERE nome = %s"""
+	cur.execute(query,[nome])
+	rv = cur.fetchall()
+	query = """DELETE FROM Orcamento_Servico WHERE id_servico = %s"""
+	cur.execute(query,[rv[0][0]])
+	conn.commit()
+	return rv
