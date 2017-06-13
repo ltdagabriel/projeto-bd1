@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+	<div class="container">
+		<form method='post' action="{{ url_for('buscarservicobd') }}" class="form-horizontal"> 
+				<h2>Buscar Serviços</h2>
+				<label>Nome do Serviço</label>
+				<input type="text" name="nome_servico" class="form-control">
+				<br>
+				<input type="submit" />
+		</form>
+	</div>
+
+{% endblock %}

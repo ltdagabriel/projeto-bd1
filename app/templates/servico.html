@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container text-center">
+	<br>
+	<div class="text-justify">
+		<h2>Serviços</h2>
+	</div>
+	<div class="row">
+		<a href={{ url_for('buscarservico') }} class="btn btn-primary btn-block" >Buscar Serviços</a>
+	</div>
+	<br>
+	<div class="row">
+		<a href={{ url_for('cadastrarservico') }} class="btn btn-primary btn-block" >Cadastrar Serviços</a>
+	</div>
+	<br>
+	<div class="row">
+		<a href={{ url_for('alterarservico') }} class="btn btn-primary btn-block" >Alterar Serviços</a>
+	</div>
+	<br>
+	<div class="row">
+		<a href={{ url_for('removerservico') }} class="btn btn-primary btn-block" >Remover Serviços</a>
+	</div>
+</div>
+
+{% endblock %}

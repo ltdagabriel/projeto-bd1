@@ -86,9 +86,9 @@ def veiculo():
 def funcionario():
 	return render_template('funcionario.html')
 
-@app.route('/servicos')
-def servicos():
-	return render_template('servicos.html')
+@app.route('/servico')
+def servico():
+	return render_template('servico.html')
 
 #PECAS
 
@@ -150,5 +150,58 @@ def removerpecabd():
 def orcamento():
 	cur = mysql.connection.cursor()
 	cur.execute('''SELECT * FROM Tarefa''')
+#SERVICOS
+
+app.route('/servico')
+def servico():
+	return render_template('servico.html')
+
 	rv = cur.fetchall();
 	return render_template('orcamento.html',result=rv)
+
+#SERVICOS
+
+app.route('/servico')
+def servico():
+	return render_template('servico.html')
+
+@app.route('/buscarservico')
+def buscarservico():
+	return render_template('buscarservico.html')
+
+@app.route('/buscarservico/bd', methods=['POST'])
+def buscarservicobd():
+	nome = request.form['nome_servico']
+	rv = bd.buscarpeca(nome)
+	return render_template('resultbusca.html',results=rv,tipo="servico")
+
+@app.route('/cadastrarservico')
+def cadastrarservico():
+	return render_template('cadastrarservico.html')
+
+@app.route('/cadastrarservico/bd' , methods=['POST'])
+def cadastrarservicobd():
+	name = request.form['nome_servico']	
+	preco = request.form['preco_servico']	
+	print(name,cpf)
+	bd.cadastrarservico(nome,preco)
+	return render_template('index.html')
+
+@app.route('/alterarservico')
+def alterarservico():
+	return render_template('alterarservico1.html')
+
+@app.route('/alterarservico2', methods=['GET','POST'])
+def alterarservico2():
+	n = request.args.get('nome_servico')
+	return render_template('alterarservico2.html',nomei=n)
+
+@app.route('/removerservico')
+def removerservico():
+	return render_template('removerservico.html')
+
+@app.route('/removerservico/bd', methods =['POST'])
+def removerservicobd():
+	nome = request.form['nome_servco']
+	bd.removerservico(nome)
+	return render_template('resultremover.html',nome=nome)
